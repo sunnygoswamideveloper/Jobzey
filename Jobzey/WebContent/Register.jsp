@@ -130,7 +130,7 @@
 		    <span class="input-group-text"> <i class="fa fa-building"></i> </span>
 		</div>
 		<select class="form-control">
-			<option selected="jobroll"> Jobroll</option>
+			<option name="jobroll" selected=""> Jobroll</option>
 			<option>Admin</option>
 			<option>Employer</option>
 			<option>Job Seeker</option>
