@@ -7,34 +7,43 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class UserServlet
- */
+import com.jobzey.dao.UserDAO;
+import com.jobzey.dao.UserDAOImpl;
+import com.jobzey.model.UserDTO;
+
+
 @WebServlet("/UserServlet")
 public class UserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-    /**
-     * Default constructor. 
-     */
     public UserServlet() {
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		UserDAO userdao=new UserDAOImpl();
+		String username=request.getParameter("username");
+		String password=request.getParameter("password");
+		String submittype=request.getParameter("submit");
+			UserDTO user=userdao.ValidateUserCredentials(username, password);
+			if(submittype.equals("login") && user!=null && user.getFirstname()!=null) {
+				request.setAttribute("message",user.getFirstname());
+				request.getRequestDispatcher("welcome.jsp").forward(request, response);
+			}else if(submittype.equals("register")) {
+				user.setFirstname(request.getParameter("firstname"));
+				user.setLastname(request.getParameter("lastname"));
+				user.setPassword(password);
+				user.setUsername(username);
+				user.setAddress(request.getParameter("address"));
+				user.setContact(request.getParameter("contact"));
+				user.setJobroll(request.getParameter("jobroll"));
+				userdao.insertUser(user);
+				request.setAttribute("message","REGISTRATION DONE,PLEASE LOGIN !!!!");
+				request.getRequestDispatcher("login.jsp").forward(request, response);
+				
+			}else {
+				request.setAttribute("message","DATA NOT FOUND, CLICK ON REGTER !!!!");
+				request.getRequestDispatcher("login.jsp").forward(request, response);
+			}
 	}
 
 }
