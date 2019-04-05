@@ -137,10 +137,7 @@
 			<option>Job Seeker</option>
 		</select>
 	</div> <!-- form-group end.// -->
-	
-	
-	
-   
+
     
     
     
