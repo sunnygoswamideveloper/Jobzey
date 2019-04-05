@@ -118,7 +118,7 @@ margin-left: 4px;
 </style>
 
 <body>
-<form action="UserServlet" method="post">
+<form action="UserLoginServlet" method="post">
 <div class="container">
 	<div class="d-flex justify-content-center h-100">
 		<div class="card">
