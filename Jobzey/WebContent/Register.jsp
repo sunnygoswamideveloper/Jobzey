@@ -124,8 +124,7 @@
     
     
    
-   
-   
+  
     <div  class="form-group input-group">
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-building"></i> </span>
@@ -140,14 +139,11 @@
 
     
     
-    
-   
-    
                                          
     <div class="form-group">
         <button type="submit" class="btn btn-primary btn-block" name="submit" value="register"> Create Account  </button>
     </div> <!-- form-group// -->      
-    <p class="text-center">Have an account? <a href="">Log In</a> </p>                                                                 
+    <p class="text-center">Have an account? <a href="login.jsp">Log In</a> </p>                                                                 
 </form>
 </article>
 </div> <!-- card.// -->

@@ -7,7 +7,7 @@ public class MyProviderImpl implements MyProvider {
 		static Connection con=null;
 			public static Connection getCon() {
 				try {
-					Class.forName("com.mysql.jdbc.Driver");
+					Class.forName("com.mysql.cj.jdbc.Driver");
 					con=DriverManager.getConnection(conurl,username,password);
 			
 				}catch(Exception e) {
